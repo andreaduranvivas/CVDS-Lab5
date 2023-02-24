@@ -8,7 +8,7 @@ public class Todo {
     private String title;
     private Boolean completed;
     
-    public void Todo(){
+    public Todo(){
 
     } 
 

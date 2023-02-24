@@ -24,7 +24,7 @@ public class SampleServlet extends HttpServlet{
 
         Optional<String> optName = Optional.ofNullable(req.getParameter("name"));
 
-        String name = optName.isPresent() && !optName.get().isEmpty() ? optName.get() : "";
+        String name = optName.isPresent() && !optName.get().isEmpty() ? optName.get() : " ";
 
         resp.setStatus(HttpServletResponse.SC_OK);
 
