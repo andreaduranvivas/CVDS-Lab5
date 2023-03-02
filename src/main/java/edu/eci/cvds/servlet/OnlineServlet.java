@@ -38,18 +38,19 @@ public class OnlineServlet extends HttpServlet{
             resp.setStatus(HttpServletResponse.SC_OK);
             todoList.add(info);
             responseWriter.write(Service.todosToHTMLTable(todoList));
+            
         }catch(Exception e){
             if(e instanceof FileNotFoundException){
                 resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                rest= "Requerimiento Inválido: debe ingresar un numero";
+                rest="no existe un item con el identificador dado";
             }
             else if(e instanceof MalformedInputException){
                 resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
                 rest="Error interno en el Servidor ";
             }
             else{
-                rest="no existe un item con el identificador dado";
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                rest= "Requerimiento Inválido: debe ingresar un numero";
             }
         }finally{
             responseWriter.write(rest);
