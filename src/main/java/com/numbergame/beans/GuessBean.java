@@ -13,11 +13,12 @@ public class GuessBean {
     private int currentNumber;
     private int numAttempts;
     private int currentPrize;
-    private String gameStatus;
+    private String gameStatus = "";
     private int guessNumber;
     private ArrayList<Integer> failedAttempts;
 
     public GuessBean() {
+        gameStatus = "Comenzar a jugar ";
         restart();
     }
 
@@ -65,6 +66,9 @@ public class GuessBean {
     }
 
     public void guess(int guessNumber) {
+        if (numAttempts == 0){
+            gameStatus = "Comenzar a jugar ";
+        }
         if (guessNumber == currentNumber) {
             gameStatus = "Ganaste $"+ currentPrize +"!";
             restart();
@@ -85,7 +89,6 @@ public class GuessBean {
         currentNumber = random.nextInt(100) + 1;
         numAttempts = 0;
         currentPrize = 100000;
-        gameStatus = "Comenzar a jugar ";
         guessNumber = 0;
         failedAttempts = new ArrayList<>();
     }
